@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waslah - انضم كمندوب توصيل</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        sora: ['Sora', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2563EB',
+                        navy: '#111827',
+                        light: '#F8FAFC',
+                        success: '#22C55E',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #F8FAFC; color: #111827; }
+        .en-text { font-family: 'Sora', sans-serif; }
+        .waslah-input { width: 100%; padding: 16px 20px; background-color: #F8FAFC; border: 2px solid #E2E8F0; border-radius: 12px; outline: none; transition: all 0.3s ease; font-weight: 600; }
+        .waslah-input:focus { border-color: #2563EB; background-color: #FFFFFF; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+        .btn-lift { transition: all 0.3s ease; }
+        .btn-lift:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 py-4 sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 max-w-[1200px] flex items-center justify-between">
+            <a href="index.html" class="flex items-center">
+                <img src="waslah logo.png" alt="Waslah Logo" class="h-12 mix-blend-multiply">
+            </a>
+            <a href="index.html" class="text-gray-500 font-bold hover:text-primary transition-colors flex items-center gap-2">
+                العودة للرئيسية <i class="fa-solid fa-arrow-left"></i>
+            </a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 max-w-[1000px] py-16">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Information Side -->
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 text-success font-bold text-xs mb-6 border border-green-100">
+                    <i class="fa-solid fa-motorcycle"></i> مطلوب مناديب في جميع المحافظات
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-navy mb-6 leading-tight">كن شريكاً في النجاح..<br>انضم لأسطول <span class="text-primary en-text">Waslah</span></h1>
+                <p class="text-lg text-gray-500 font-medium mb-8">هل تمتلك دراجة نارية أو سيارة ووقت فراغ؟ انضم إلينا الآن وحقق دخلاً إضافياً ممتازاً من خلال توصيل طلبات عملائنا في منطقتك بكل مرونة.</p>
+                
+                <div class="space-y-6">
+                    <div class="flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-xl flex-shrink-0"><i class="fa-solid fa-money-bill-wave"></i></div>
+                        <div>
+                            <h3 class="font-bold text-navy text-lg">دخل ممتاز ومستمر</h3>
+                            <p class="text-gray-500 text-sm font-medium">احصل على عمولة مجزية عن كل طلب تقوم بتوصيله بنجاح.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-xl flex-shrink-0"><i class="fa-solid fa-clock"></i></div>
+                        <div>
+                            <h3 class="font-bold text-navy text-lg">أوقات عمل مرنة</h3>
+                            <p class="text-gray-500 text-sm font-medium">أنت مدير نفسك! اختر الأوقات التي تناسبك للعمل واستلام الطلبات.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 text-primary flex items-center justify-center text-xl flex-shrink-0"><i class="fa-solid fa-mobile-screen"></i></div>
+                        <div>
+                            <h3 class="font-bold text-navy text-lg">تطبيق سهل الاستخدام</h3>
+                            <p class="text-gray-500 text-sm font-medium">نوفر لك نظاماً سهلاً لتتبع الطلبات والمواقع واستلام مستحقاتك بوضوح.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Side -->
+            <div class="bg-white p-8 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-gray-100 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-primary rounded-full filter blur-[60px] opacity-10"></div>
+                
+                <h2 class="text-2xl font-extrabold text-navy mb-2">نموذج التسجيل المبدئي</h2>
+                <p class="text-gray-500 text-sm font-medium mb-6">سجل بياناتك الآن وسيقوم فريق العمليات بالتواصل معك لإكمال الإجراءات.</p>
+                
+                <form id="courier-form" class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2 text-sm">الاسم الرباعي <span class="text-red-500">*</span></label>
+                        <input type="text" id="c-name" placeholder="أدخل اسمك الكامل" class="waslah-input" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-2 text-sm">رقم الهاتف (واتساب) <span class="text-red-500">*</span></label>
+                        <input type="tel" id="c-phone" placeholder="77X XXX XXX" class="waslah-input text-left" dir="ltr" required>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-gray-700 font-bold mb-2 text-sm">المحافظة <span class="text-red-500">*</span></label>
+                            <select id="c-city" class="waslah-input" required>
+                                <option value="">اختر...</option>
+                                <option value="صنعاء">صنعاء</option>
+                                <option value="عدن">عدن</option>
+                                <option value="تعز">تعز</option>
+                                <option value="حضرموت">حضرموت</option>
+                                <option value="إب">إب</option>
+                                <option value="أخرى">أخرى</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-bold mb-2 text-sm">نوع وسيلة النقل <span class="text-red-500">*</span></label>
+                            <select id="c-vehicle" class="waslah-input" required>
+                                <option value="">اختر...</option>
+                                <option value="دراجة نارية">دراجة نارية</option>
+                                <option value="سيارة">سيارة</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-navy text-white rounded-xl py-4 font-bold text-lg btn-lift hover:bg-gray-800 transition-colors mt-4 flex justify-center items-center gap-2">
+                        إرسال طلب الانضمام <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    
+                    <p class="text-center text-xs text-gray-400 font-medium mt-4">
+                        أو يمكنك التواصل معنا مباشرة عبر <a href="https://wa.me/967733206681" target="_blank" class="text-success hover:underline font-bold"><i class="fa-brands fa-whatsapp"></i> واتساب</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function showToast(message, isSuccess = false) {
+            const toastDiv = document.createElement('div');
+            toastDiv.className = `fixed bottom-4 right-4 text-white px-6 py-3 rounded-xl shadow-lg z-50 font-bold flex items-center gap-3 transform transition-all duration-300 translate-y-20 opacity-0 ${isSuccess ? 'bg-success' : 'bg-primary'}`;
+            toastDiv.innerHTML = isSuccess ? `<i class="fa-solid fa-check-circle"></i> ${message}` : `<i class="fa-solid fa-circle-info"></i> ${message}`;
+            document.body.appendChild(toastDiv);
+            
+            setTimeout(() => {
+                toastDiv.classList.remove('translate-y-20', 'opacity-0');
+                toastDiv.classList.add('translate-y-0', 'opacity-100');
+            }, 10);
+            
+            setTimeout(() => {
+                toastDiv.classList.add('translate-y-20', 'opacity-0');
+                toastDiv.classList.remove('translate-y-0', 'opacity-100');
+                setTimeout(() => toastDiv.remove(), 300);
+            }, 4000);
+        }
+
+        // Handle Form Submission
+        document.getElementById('courier-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> جاري الإرسال...';
+            btn.disabled = true;
+            
+            // Simulate API Call
+            setTimeout(() => {
+                showToast('تم إرسال طلبك بنجاح! سنتواصل معك قريباً.', true);
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                this.reset(); // Clear form
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

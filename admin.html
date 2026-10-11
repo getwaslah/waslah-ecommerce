@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waslah Admin - لوحة التحكم</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { cairo: ['Cairo', 'sans-serif'], sora: ['Sora', 'sans-serif'] }, colors: { primary: '#2563EB', purple: '#7C3AED', navy: '#111827', success: '#22C55E', warning: '#F59E0B', light: '#F8FAFC' } } } }
+    </script>
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #F1F5F9; color: #111827; }
+        .en-text { font-family: 'Sora', sans-serif; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
+        .nav-item { transition: all 0.2s ease; border-right: 4px solid transparent; }
+        .nav-item:hover, .nav-item.active { background-color: #EFF6FF; color: #2563EB; border-right: 4px solid #2563EB; }
+        .fade-in { animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <div id="sidebar-overlay" class="fixed inset-0 bg-navy/50 z-40 hidden md:hidden"></div>
+
+    <aside id="admin-sidebar" class="w-72 bg-white border-l border-gray-200 flex flex-col h-full shadow-sm z-50 fixed md:relative transform translate-x-full md:translate-x-0 transition-transform duration-300">
+        <div class="h-20 flex items-center justify-between border-b border-gray-100 px-6">
+            <img src="waslah logo.png" alt="Waslah Logo" class="h-12 object-contain mix-blend-multiply">
+            <button id="close-sidebar" class="md:hidden text-gray-500 hover:text-red-500 text-xl"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <nav class="flex-1 py-6 px-4 space-y-2 overflow-y-auto" id="main-nav">
+            <a href="#" data-target="overview" class="nav-item active flex items-center gap-4 px-4 py-3 rounded-xl font-bold text-gray-600"><i class="fa-solid fa-chart-pie w-6 text-center"></i> نظرة عامة</a>
+            <a href="#" data-target="orders" class="nav-item flex items-center gap-4 px-4 py-3 rounded-xl font-bold text-gray-600"><i class="fa-solid fa-box-open w-6 text-center"></i> الطلبات</a>
+            <a href="#" data-target="customers" class="nav-item flex items-center gap-4 px-4 py-3 rounded-xl font-bold text-gray-600"><i class="fa-solid fa-users w-6 text-center"></i> العملاء</a>
+            <a href="#" data-target="finance" class="nav-item flex items-center gap-4 px-4 py-3 rounded-xl font-bold text-gray-600"><i class="fa-solid fa-wallet w-6 text-center"></i> المالية والمحافظ</a>
+            <a href="#" data-target="shipping" class="nav-item flex items-center gap-4 px-4 py-3 rounded-xl font-bold text-gray-600"><i class="fa-solid fa-plane-departure w-6 text-center"></i> الشحن الدولي</a>
+            <a href="#" data-target="settings" class="nav-item flex items-center gap-4 px-4 py-3 rounded-xl font-bold text-gray-600"><i class="fa-solid fa-gear w-6 text-center"></i> الإعدادات</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-full overflow-hidden w-full">
+        <header class="h-20 bg-white border-b border-gray-200 flex items-center justify-between px-4 md:px-8 shadow-sm shrink-0">
+            <div class="flex items-center gap-3">
+                <button id="sidebar-toggle" class="md:hidden text-2xl text-navy focus:outline-none"><i class="fa-solid fa-bars"></i></button>
+                <h1 id="page-title" class="text-xl md:text-2xl font-extrabold text-navy">نظرة عامة</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-gray-500 hover:text-red-500 transition-colors text-xl" title="العودة للموقع"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+            </div>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-8 relative">
+            
+            <!-- 1. Overview -->
+            <div id="section-overview" class="content-section block fade-in">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"><p class="text-gray-500 font-bold">الإيرادات</p><p class="text-2xl font-extrabold text-navy en-text">YR 450,000</p></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"><p class="text-gray-500 font-bold">طلبات بانتظار المراجعة</p><p class="text-2xl font-extrabold text-warning">12</p></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"><p class="text-gray-500 font-bold">شحنات في الطريق</p><p class="text-2xl font-extrabold text-purple">84</p></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"><p class="text-gray-500 font-bold">العملاء النشطين</p><p class="text-2xl font-extrabold text-success">+1,200</p></div>
+                </div>
+            </div>
+
+            <!-- 2. Orders -->
+            <div id="section-orders" class="content-section hidden fade-in">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-extrabold text-navy">إدارة الطلبات</h2>
+                    <div class="flex gap-2">
+                        <button onclick="exportOrdersToExcel()" class="bg-green-600 text-white px-4 py-2 rounded-xl font-bold text-sm"><i class="fa-solid fa-file-excel"></i> إكسل</button>
+                        <button onclick="exportOrdersToWord()" class="bg-blue-600 text-white px-4 py-2 rounded-xl font-bold text-sm"><i class="fa-solid fa-file-word"></i> وورد</button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-x-auto">
+                    <table id="orders-table" class="w-full text-right border-collapse text-sm">
+                        <thead class="bg-gray-50 text-gray-500">
+                            <tr><th class="p-4 font-bold">الطلب</th><th class="p-4 font-bold">العميل</th><th class="p-4 font-bold">المبلغ</th><th class="p-4 font-bold">الحالة</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b"><td class="p-4 font-bold en-text">#WSL-9842</td><td class="p-4">ياسر أحمد</td><td class="p-4 en-text">YR 13,785</td><td class="p-4 text-warning font-bold">بانتظار المراجعة</td></tr>
+                            <tr class="border-b"><td class="p-4 font-bold en-text">#WSL-9841</td><td class="p-4">فاطمة علي</td><td class="p-4 en-text">YR 22,500</td><td class="p-4 text-success font-bold">تم الدفع</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 3. Customers -->
+            <div id="section-customers" class="content-section hidden fade-in">
+                <h2 class="text-2xl font-extrabold text-navy mb-6">إدارة العملاء</h2>
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-x-auto">
+                    <table class="w-full text-right text-sm">
+                        <thead class="bg-gray-50 text-gray-500"><tr><th class="p-4">الاسم</th><th class="p-4">الهاتف</th><th class="p-4">رصيد المحفظة</th></tr></thead>
+                        <tbody>
+                            <tr class="border-b"><td class="p-4 font-bold">ياسر أحمد</td><td class="p-4 en-text" dir="ltr">+967 773 XXX</td><td class="p-4 font-extrabold text-success en-text">YR 45,000</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 4. Finance -->
+            <div id="section-finance" class="content-section hidden fade-in">
+                <h2 class="text-2xl font-extrabold text-navy mb-6">المالية والحسابات</h2>
+                <p class="text-gray-500 font-bold mb-4">قسم المطابقات وإحصائيات المحافظ.</p>
+            </div>
+
+            <!-- 5. Shipping -->
+            <div id="section-shipping" class="content-section hidden fade-in">
+                <h2 class="text-2xl font-extrabold text-navy mb-6">تتبع الشحنات الدولية</h2>
+                <p class="text-gray-500 font-bold mb-4">قسم تتبع الشحنات من الصين إلى اليمن.</p>
+            </div>
+
+            <!-- 6. Settings -->
+            <div id="section-settings" class="content-section hidden fade-in">
+                <h2 class="text-2xl font-extrabold text-navy mb-6">الإعدادات وأسعار الصرف</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                        <h3 class="font-bold text-lg mb-4">أسعار الصرف للريال اليمني</h3>
+                        <div class="space-y-3">
+                            <div><label class="block text-xs font-bold text-gray-500">1 دولار = (ريال قديم)</label><input type="number" value="530" class="w-full bg-gray-50 border p-2 rounded-lg font-bold"></div>
+                            <div><label class="block text-xs font-bold text-gray-500">1 دولار = (ريال جديد)</label><input type="number" value="1500" class="w-full bg-gray-50 border p-2 rounded-lg font-bold"></div>
+                            <div><label class="block text-xs font-bold text-gray-500">1 سعودي = (ريال قديم)</label><input type="number" value="140" class="w-full bg-gray-50 border p-2 rounded-lg font-bold"></div>
+                            <div><label class="block text-xs font-bold text-gray-500">1 سعودي = (ريال جديد)</label><input type="number" value="398" class="w-full bg-gray-50 border p-2 rounded-lg font-bold"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const navItems = document.querySelectorAll('.nav-item');
+        const contentSections = document.querySelectorAll('.content-section');
+        const pageTitle = document.getElementById('page-title');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                navItems.forEach(nav => { nav.classList.remove('active', 'bg-blue-50', 'text-primary'); nav.classList.add('text-gray-600'); nav.style.borderRightColor = "transparent"; });
+                this.classList.remove('text-gray-600'); this.classList.add('active', 'bg-blue-50', 'text-primary'); this.style.borderRightColor = "#2563EB";
+                pageTitle.innerText = this.innerText;
+                contentSections.forEach(section => { section.classList.add('hidden'); section.classList.remove('block'); });
+                const targetId = 'section-' + this.getAttribute('data-target');
+                document.getElementById(targetId).classList.remove('hidden'); document.getElementById(targetId).classList.add('block');
+                if(window.innerWidth < 768) closeSidebar();
+            });
+        });
+
+        const sidebar = document.getElementById('admin-sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        function closeSidebar() { sidebar.classList.add('translate-x-full'); sidebarOverlay.classList.add('hidden'); }
+        document.getElementById('sidebar-toggle').addEventListener('click', () => { sidebar.classList.remove('translate-x-full'); sidebarOverlay.classList.remove('hidden'); });
+        document.getElementById('close-sidebar').addEventListener('click', closeSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+
+        function showToast(message) {
+            const toastDiv = document.createElement('div');
+            toastDiv.className = 'fixed bottom-4 right-4 bg-navy text-white px-6 py-3 rounded-xl shadow-lg z-50 font-bold flex items-center gap-3 transform transition-all duration-300 translate-y-20 opacity-0';
+            toastDiv.innerHTML = `<i class="fa-solid fa-check-circle"></i> ${message}`;
+            document.body.appendChild(toastDiv);
+            setTimeout(() => { toastDiv.classList.remove('translate-y-20', 'opacity-0'); toastDiv.classList.add('translate-y-0', 'opacity-100'); }, 10);
+            setTimeout(() => { toastDiv.classList.add('translate-y-20', 'opacity-0'); toastDiv.classList.remove('translate-y-0', 'opacity-100'); setTimeout(() => toastDiv.remove(), 300); }, 3000);
+        }
+
+        function exportOrdersToExcel() {
+            try {
+                const wb = XLSX.utils.table_to_book(document.getElementById("orders-table"), {sheet: "الطلبات"});
+                XLSX.writeFile(wb, "تقرير_طلبات_وصلة.xlsx");
+                showToast("تم تصدير تقرير الإكسل بنجاح!");
+            } catch (e) { console.error(e); }
+        }
+
+        function exportOrdersToWord() {
+            try {
+                const tableHTML = document.getElementById("orders-table").outerHTML;
+                const sourceHTML = `<html dir='rtl'><head><meta charset='utf-8'><style>body{font-family:Arial; direction:rtl;} table{border-collapse:collapse; width:100%;} th,td{border:1px solid #ccc; padding:10px; text-align:right;} th{background:#eee;}</style></head><body><h2>تقرير طلبات منصة وصلة</h2>${tableHTML}</body></html>`;
+                const blob = new Blob(['\ufeff', sourceHTML], { type: 'application/msword' });
+                const downloadLink = document.createElement("a");
+                downloadLink.href = URL.createObjectURL(blob);
+                downloadLink.download = 'تقرير_طلبات_وصلة.doc';
+                downloadLink.click();
+                showToast("تم تصدير تقرير الوورد بنجاح!");
+            } catch (e) { console.error(e); }
+        }
+    </script>
+</body>
+</html>

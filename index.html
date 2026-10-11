@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waslah - تسوق من أي متجر عالمي إلى اليمن</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        sora: ['Sora', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2563EB',
+                        purple: '#7C3AED',
+                        navy: '#111827',
+                        success: '#22C55E',
+                        light: '#F1F5F9',
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 60px rgba(0,0,0,0.08)',
+                        'glow': '0 0 40px rgba(37, 99, 235, 0.2)',
+                    },
+                    borderRadius: {
+                        'xl': '18px',
+                        '2xl': '22px',
+                        '3xl': '24px',
+                        '4xl': '28px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #FAFAFA; color: #111827; overflow-x: hidden; scroll-behavior: smooth; }
+        .en-text { font-family: 'Sora', sans-serif; }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-lift { transition: all 0.3s ease; }
+        .btn-lift:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3); }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-1 { animation: float 6s ease-in-out infinite; }
+        .blur-circle { position: absolute; border-radius: 50%; filter: blur(100px); z-index: -1; opacity: 0.5; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white">
+
+    <!-- Top Bar -->
+    <div class="bg-navy text-white text-sm py-2 font-medium">
+        <div class="container mx-auto px-6 max-w-[1440px] flex flex-wrap justify-center sm:justify-between items-center gap-4">
+            <div class="flex items-center gap-6">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-money-bill-wave text-success"></i> الدفع بالريال اليمني متوفر</span>
+                <span class="hidden md:flex items-center gap-2"><i class="fa-solid fa-truck-fast text-blue-400"></i> الشحن لجميع المحافظات</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="https://wa.me/967733206681" target="_blank" dir="ltr" class="hover:text-primary transition-colors flex items-center gap-2 font-bold">
+                    <i class="fa-brands fa-whatsapp text-success text-lg"></i> +967 733 206 681
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 mt-10">
+        <div class="container mx-auto px-6 max-w-[1440px]">
+            <div class="glass-nav rounded-4xl px-8 h-[88px] flex items-center justify-between shadow-sm">
+                
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-2">
+                    <img src="waslah logo.png" alt="Waslah Logo" class="h-16 mix-blend-multiply drop-shadow-sm">
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center gap-10 font-bold text-gray-600">
+                    <a href="#" class="text-primary transition-colors">الرئيسية</a>
+                    <a href="#smart-order" class="hover:text-primary transition-colors">اطلب الآن</a>
+                    <a href="#how-it-works" class="hover:text-primary transition-colors">كيف تعمل</a>
+                    <a href="#features" class="hover:text-primary transition-colors">المميزات</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="admin.html" class="font-bold text-navy hover:text-primary transition-colors px-4">تسجيل الدخول للإدارة</a>
+                    <a href="#smart-order" class="bg-navy text-white px-8 py-3 rounded-xl font-bold btn-lift shadow-md hover:bg-gray-800">ابدأ الآن</a>
+                </div>
+
+                <!-- Mobile Toggle -->
+                <button id="mobile-menu-btn" class="lg:hidden text-2xl text-navy focus:outline-none"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col">
+            <div class="p-6 flex justify-between items-center border-b border-gray-100">
+                <img src="waslah logo.png" alt="Waslah Logo" class="h-12 mix-blend-multiply">
+                <button id="close-mobile-menu" class="text-2xl text-gray-500 hover:text-red-500"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <nav class="flex-1 flex flex-col p-6 gap-6 font-bold text-lg text-navy">
+                <a href="index.html" class="mobile-link text-primary">الرئيسية</a>
+                <a href="#smart-order" class="mobile-link" onclick="closeMobileMenu()">اطلب الآن</a>
+                <a href="#how-it-works" class="mobile-link" onclick="closeMobileMenu()">كيف تعمل</a>
+                <hr class="border-gray-100">
+                <a href="admin.html" class="mobile-link flex items-center gap-2"><i class="fa-solid fa-user-shield text-gray-400"></i> تسجيل الدخول للإدارة</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-48 pb-32 overflow-hidden min-h-[900px] flex items-center">
+        <div class="blur-circle w-[600px] h-[600px] bg-blue-300 top-0 right-[-100px]"></div>
+        <div class="blur-circle w-[500px] h-[500px] bg-purple-200 bottom-[-100px] left-[-100px]"></div>
+
+        <div class="container mx-auto px-6 max-w-[1440px] relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                
+                <div class="flex flex-col items-start text-right">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-primary font-bold text-sm mb-6 border border-blue-100">
+                        <span class="relative flex h-3 w-3"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span></span>
+                        الإصدار النهائي 2026
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 text-navy">
+                        تسوق من أي متجر عالمي... <br>
+                        واستلم طلبك في <span class="text-gradient">اليمن بسهولة.</span>
+                    </h1>
+                    
+                    <p class="text-xl text-gray-600 mb-10 leading-relaxed max-w-lg">
+                        انسخ رابط المنتج فقط، وسيتم شراء المنتج وشحنه حتى باب منزلك مع إمكانية الدفع المحلي بطرق آمنة.
+                    </p>
+                    
+                    <div class="flex flex-wrap items-center gap-4 mb-12">
+                        <a href="#smart-order" class="bg-primary text-white px-10 py-4 rounded-xl font-bold text-lg btn-lift shadow-lg shadow-blue-500/30 flex items-center gap-3">
+                            ابدأ الطلب <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+                        <a href="#smart-order" class="bg-white text-navy border-2 border-gray-200 px-10 py-4 rounded-xl font-bold text-lg btn-lift hover:border-navy transition-colors">
+                            تتبع الطلب
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative h-[600px] hidden lg:block">
+                    <div class="absolute top-[20%] right-[10%] glass-card rounded-2xl p-4 shadow-soft floating-1 z-20 flex items-center gap-4 border-l-4 border-l-success">
+                        <div class="w-12 h-12 rounded-full bg-green-50 text-success flex items-center justify-center text-xl"><i class="fa-solid fa-box-check"></i></div>
+                        <div><p class="font-bold text-navy en-text">Order Created</p><p class="text-sm text-gray-500">تم الطلب بنجاح</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Order Section -->
+    <section id="smart-order" class="py-24 bg-white relative z-20">
+        <div class="container mx-auto px-6 max-w-[1000px]">
+            <div class="bg-navy rounded-4xl p-10 md:p-16 text-center shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full filter blur-[80px] opacity-20"></div>
+                
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4 relative z-10">ألصق رابط المنتج</h2>
+                <p class="text-gray-400 text-lg mb-10 relative z-10">انسخ رابط المنتج من (SHEIN, AliExpress) وسنقوم بالباقي.</p>
+                
+                <div class="relative z-10 max-w-3xl mx-auto bg-white rounded-3xl p-2 flex flex-col md:flex-row gap-2 shadow-glow">
+                    <div class="flex-grow flex items-center px-4">
+                        <i class="fa-solid fa-link text-gray-400 text-xl ml-3"></i>
+                        <input type="text" id="product-link-input" placeholder="https://www.shein.com/..." class="w-full py-4 bg-transparent outline-none text-lg text-navy en-text placeholder-gray-400 font-medium transition-all duration-300" dir="ltr">
+                    </div>
+                    <button id="create-order-btn" class="bg-primary text-white rounded-2xl px-10 py-4 font-bold text-xl btn-lift w-full md:w-auto flex-shrink-0 relative overflow-hidden">
+                        <span id="btn-text" class="transition-opacity duration-300">إنشاء الطلب</span>
+                        <i id="btn-spinner" class="fa-solid fa-circle-notch fa-spin absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center" dir="rtl">
+        <div class="absolute inset-0 bg-navy/80 backdrop-blur-sm" onclick="closeProductModal()"></div>
+        <div class="bg-white rounded-[32px] shadow-2xl w-[90%] max-w-xl relative z-10 overflow-hidden transform scale-95 opacity-0 transition-all duration-300" id="product-content">
+            <button onclick="closeProductModal()" class="absolute top-4 left-4 bg-gray-100 w-10 h-10 rounded-full text-gray-500 hover:bg-gray-200 hover:text-navy transition-colors text-lg flex items-center justify-center focus:outline-none z-20">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="p-8 pb-0">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-success font-bold text-xs mb-6">
+                    <i class="fa-solid fa-circle-check"></i> تم جلب بيانات المنتج بنجاح
+                </div>
+                <h3 class="text-3xl font-extrabold text-navy mb-8">تفاصيل طلبك</h3>
+            </div>
+            
+            <div class="px-8 pb-8 flex flex-col md:flex-row gap-6">
+                <div class="w-full md:w-1/2 h-64 bg-primary text-white rounded-2xl flex items-center justify-center overflow-hidden shadow-inner">
+                    <span class="en-text text-4xl font-black">SHEIN</span>
+                </div>
+                <div class="w-full md:w-1/2 flex flex-col justify-center">
+                    <p class="text-xs text-gray-400 font-bold mb-1 uppercase tracking-wider en-text">SHEIN</p>
+                    <h4 class="font-bold text-navy text-lg mb-4 line-clamp-3 leading-relaxed">فستان صيفي أنيق بتصميم عصري (مثال لمنتج من شي إن)</h4>
+                    
+                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 mt-auto">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-500 text-sm font-medium">سعر المنتج الأصلي</span>
+                            <span class="en-text font-bold text-gray-700">$18.50</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-gray-500 text-sm font-medium">الشحن والعمولة</span>
+                            <span class="text-success text-xs font-bold bg-green-50 px-2 py-1 rounded">مشمولة</span>
+                        </div>
+                        <hr class="border-gray-200 mb-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-navy font-black">الإجمالي المطلوب</span>
+                            <span class="en-text font-black text-xl text-primary">YR 13,786</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-6 bg-gray-50 border-t border-gray-100">
+                <a href="checkout.html" class="block w-full text-center bg-navy text-white py-4 rounded-xl font-bold text-lg hover:bg-primary transition-colors flex items-center justify-center gap-3 btn-lift">
+                    متابعة للدفع الآمن <i class="fa-solid fa-shield-halved"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- How it works Section -->
+    <section id="how-it-works" class="py-24 bg-light">
+        <div class="container mx-auto px-6 max-w-[1440px]">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-navy mb-4">كيف تعمل <span class="en-text text-primary">Waslah</span>؟</h2>
+                <p class="text-xl text-gray-600">4 خطوات بسيطة تفصلك عن منتجك المفضل.</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-sm text-center border border-gray-100 hover:-translate-y-2 transition-transform">
+                    <div class="w-16 h-16 bg-blue-50 text-primary rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6"><i class="fa-solid fa-link"></i></div>
+                    <h3 class="font-bold text-xl text-navy mb-3">1. انسخ الرابط</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">ابحث عن منتجك المفضل في المتاجر العالمية وانسخ رابطه.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm text-center border border-gray-100 hover:-translate-y-2 transition-transform">
+                    <div class="w-16 h-16 bg-purple-50 text-purple rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6"><i class="fa-solid fa-paste"></i></div>
+                    <h3 class="font-bold text-xl text-navy mb-3">2. ألصق في وصلة</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">ضع الرابط في مربع البحث وسنقوم بحساب التكلفة تلقائياً.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm text-center border border-gray-100 hover:-translate-y-2 transition-transform">
+                    <div class="w-16 h-16 bg-green-50 text-success rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6"><i class="fa-solid fa-money-bill-transfer"></i></div>
+                    <h3 class="font-bold text-xl text-navy mb-3">3. الدفع المحلي</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">ادفع بسهولة عبر الكريمي أو جوالي أو النجم لضمان طلبك.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm text-center border border-gray-100 hover:-translate-y-2 transition-transform">
+                    <div class="w-16 h-16 bg-orange-50 text-orange-500 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6"><i class="fa-solid fa-box-open"></i></div>
+                    <h3 class="font-bold text-xl text-navy mb-3">4. استلم طلبك</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">سنقوم بشحن طلبك وتوصيله حتى باب منزلك في أي محافظة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy pt-24 pb-12 text-white border-t-8 border-primary">
+        <div class="container mx-auto px-6 max-w-[1440px]">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Col 1: Brand -->
+                <div>
+                    <a href="index.html" class="mb-6 bg-white inline-block p-3 rounded-2xl shadow-lg border border-gray-200">
+                        <img src="waslah logo.png" alt="Waslah Logo" class="h-12 object-contain mix-blend-multiply">
+                    </a>
+                    <p class="text-gray-400 font-medium leading-relaxed mb-6">
+                        منصة التسوق والوساطة الأولى في اليمن. نربطك بأفضل المتاجر العالمية ونسهل عليك الدفع والشحن.
+                    </p>
+                    <div class="flex flex-col gap-3 mb-6 font-bold text-sm">
+                        <a href="https://wa.me/967733206681" target="_blank" dir="ltr" class="text-left w-max flex items-center gap-2 hover:text-success transition-colors"><i class="fa-brands fa-whatsapp text-success text-xl"></i> +967 733 206 681</a>
+                        <a href="https://getwaslah.com" target="_blank" dir="ltr" class="text-left w-max flex items-center gap-2 hover:text-primary transition-colors"><i class="fa-solid fa-globe text-primary text-xl"></i> getwaslah.com</a>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/getwaslah" target="_blank" title="إنستجرام" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#E4405F] transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+                        <a href="https://wa.me/967733206681" target="_blank" title="واتساب" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#25D366] transition-colors"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+                        <a href="https://www.facebook.com/getwaslah" target="_blank" title="فيسبوك" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#1877F2] transition-colors"><i class="fa-brands fa-facebook-f text-lg"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: About / Stores -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-white">المتاجر والروابط</h3>
+                    <div class="flex flex-col gap-4 text-gray-400 font-medium">
+                        <a href="https://ar.shein.com/" target="_blank" class="hover:text-primary transition-colors text-right w-max flex items-center gap-2"><i class="fa-solid fa-link text-xs"></i> متجر شي إن (SHEIN)</a>
+                        <a href="https://ar.aliexpress.com/" target="_blank" class="hover:text-primary transition-colors text-right w-max flex items-center gap-2"><i class="fa-solid fa-link text-xs"></i> متجر علي إكسبريس</a>
+                        <hr class="border-gray-800 my-1 w-1/2">
+                        <a href="about.html" class="hover:text-primary transition-colors text-right w-max">عن شركة وصلة</a>
+                        <a href="courier.html" class="hover:text-primary transition-colors text-right w-max">انضم كمندوب توصيل</a>
+                    </div>
+                </div>
+
+                <!-- Col 3: Help -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-white">المساعدة</h3>
+                    <div class="flex flex-col gap-4 text-gray-400 font-medium">
+                        <a href="#smart-order" class="hover:text-primary transition-colors text-right w-max">تتبع الطلب</a>
+                        <a href="#how-it-works" class="hover:text-primary transition-colors text-right w-max">الأسئلة الشائعة</a>
+                        <a href="https://wa.me/967733206681" target="_blank" class="hover:text-primary transition-colors text-right w-max">تواصل معنا (دعم فني)</a>
+                        <a href="#how-it-works" class="hover:text-primary transition-colors text-right w-max">كيفية الطلب</a>
+                    </div>
+                </div>
+
+                <!-- Col 4: Legal -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-white">القوانين</h3>
+                    <div class="flex flex-col gap-4 text-gray-400 font-medium">
+                        <a href="terms.html" class="hover:text-primary transition-colors text-right w-max">الشروط والأحكام</a>
+                        <a href="privacy.html" class="hover:text-primary transition-colors text-right w-max">سياسة الخصوصية</a>
+                        <a href="terms.html" class="hover:text-primary transition-colors text-right w-max">سياسة الاسترجاع</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 font-medium text-sm">
+                <p>&copy; 2026 Waslah. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Custom Toast Notification Function
+        function showToast(message, isWarning = true) {
+            const toastDiv = document.createElement('div');
+            toastDiv.className = `fixed top-4 right-4 text-white px-6 py-3 rounded-xl shadow-lg z-[150] font-bold flex items-center gap-3 transform transition-all duration-300 -translate-y-20 opacity-0 ${isWarning ? 'bg-navy' : 'bg-success'}`;
+            toastDiv.innerHTML = isWarning ? `<i class="fa-solid fa-triangle-exclamation text-warning"></i> ${message}` : `<i class="fa-solid fa-check"></i> ${message}`;
+            document.body.appendChild(toastDiv);
+            
+            setTimeout(() => {
+                toastDiv.classList.remove('-translate-y-20', 'opacity-0');
+                toastDiv.classList.add('translate-y-0', 'opacity-100');
+            }, 10);
+            
+            setTimeout(() => {
+                toastDiv.classList.add('-translate-y-20', 'opacity-0');
+                toastDiv.classList.remove('translate-y-0', 'opacity-100');
+                setTimeout(() => toastDiv.remove(), 300);
+            }, 3000);
+        }
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMobileMenuBtn = document.getElementById('close-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('translate-x-full');
+        }
+        
+        closeMobileMenuBtn.addEventListener('click', closeMobileMenu);
+
+        // Product Modal Logic
+        const createOrderBtn = document.getElementById('create-order-btn');
+        const productInput = document.getElementById('product-link-input');
+        const modal = document.getElementById('product-modal');
+        const modalContent = document.getElementById('product-content');
+        const btnText = document.getElementById('btn-text');
+        const btnSpinner = document.getElementById('btn-spinner');
+
+        createOrderBtn.addEventListener('click', () => {
+            if (!productInput.value) {
+                showToast('الرجاء إدخال رابط المنتج أولاً.');
+                return;
+            }
+
+            btnText.classList.add('opacity-0');
+            btnSpinner.classList.remove('hidden');
+            createOrderBtn.disabled = true;
+
+            setTimeout(() => {
+                btnText.classList.remove('opacity-0');
+                btnSpinner.classList.add('hidden');
+                createOrderBtn.disabled = false;
+                
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modalContent.classList.remove('scale-95', 'opacity-0');
+                    modalContent.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            }, 1500);
+        });
+
+        function closeProductModal() {
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+    </script>
+</body>
+</html>

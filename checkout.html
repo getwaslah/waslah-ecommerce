@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waslah - الدفع الآمن</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        sora: ['Sora', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2563EB',
+                        purple: '#7C3AED',
+                        navy: '#111827',
+                        success: '#22C55E',
+                        light: '#F1F5F9',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #F8FAFC; color: #111827; }
+        .en-text { font-family: 'Sora', sans-serif; }
+        .waslah-input { width: 100%; padding: 18px 22px; background-color: #FFFFFF; border: 2px solid #E2E8F0; border-radius: 16px; outline: none; transition: all 0.3s ease; font-weight: 600; }
+        .waslah-input:focus { border-color: #2563EB; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+        .payment-card { border: 2px solid #E2E8F0; border-radius: 20px; padding: 20px; cursor: pointer; transition: all 0.3s ease; position: relative; background: #FFFFFF; }
+        .payment-card:hover { border-color: #CBD5E1; transform: translateY(-2px); }
+        .payment-radio:checked + .payment-card { border-color: #2563EB; background-color: #EFF6FF; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1); }
+        .payment-radio:checked + .payment-card::after { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; top: 15px; left: 15px; color: #2563EB; font-size: 20px; }
+        .upload-zone { border: 2px dashed #CBD5E1; border-radius: 20px; padding: 30px; text-align: center; background: #F8FAFC; cursor: pointer; transition: all 0.3s ease; }
+        .upload-zone:hover { border-color: #2563EB; background: #EFF6FF; }
+        .btn-lift { transition: all 0.3s ease; }
+        .btn-lift:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white border-b border-gray-200 py-4 sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 max-w-[1200px] flex items-center justify-between">
+            <a href="index.html" class="flex items-center">
+                <img src="waslah logo.png" alt="Waslah Logo" class="h-12 mix-blend-multiply">
+            </a>
+            <div class="flex items-center gap-2 text-gray-500 font-bold bg-gray-50 px-4 py-2 rounded-xl border border-gray-100">
+                <i class="fa-solid fa-lock text-success"></i> دفع مشفر وآمن
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 max-w-[1200px] py-12">
+        <div class="flex flex-col lg:flex-row gap-10">
+            
+            <div class="w-full lg:w-2/3 space-y-10">
+                
+                <section class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                    <h2 class="text-2xl font-extrabold text-navy mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-blue-100 text-primary flex items-center justify-center text-sm">1</span> بيانات التوصيل
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div><label class="block text-gray-600 font-bold mb-2 ml-1">الاسم الكامل</label><input type="text" placeholder="مثال: ياسر أحمد" class="waslah-input"></div>
+                        <div><label class="block text-gray-600 font-bold mb-2 ml-1">رقم الواتساب (للتواصل)</label><input type="tel" placeholder="77X XXX XXX" class="waslah-input text-left" dir="ltr"></div>
+                        <div>
+                            <label class="block text-gray-600 font-bold mb-2 ml-1">المحافظة</label>
+                            <select class="waslah-input">
+                                <option value="" disabled selected>اختر المحافظة...</option>
+                                <option>صنعاء</option><option>عدن</option><option>تعز</option><option>حضرموت</option><option>إب</option>
+                            </select>
+                        </div>
+                        <div><label class="block text-gray-600 font-bold mb-2 ml-1">العنوان التفصيلي</label><input type="text" placeholder="مثال: شارع حدة..." class="waslah-input"></div>
+                    </div>
+                </section>
+
+                <section class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                    <h2 class="text-2xl font-extrabold text-navy mb-6 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-blue-100 text-primary flex items-center justify-center text-sm">2</span> طريقة الدفع (المحلية)
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                        <label class="relative cursor-pointer">
+                            <input type="radio" name="payment_method" value="kuraimi" class="payment-radio sr-only" onchange="showPaymentDetails('kuraimi')">
+                            <div class="payment-card flex items-center gap-4">
+                                <div class="w-14 h-14 bg-green-50 rounded-xl flex items-center justify-center text-success text-2xl"><i class="fa-solid fa-building-columns"></i></div>
+                                <div><h4 class="font-bold text-navy text-lg">بنك الكريمي</h4><p class="text-sm text-gray-500 font-medium">متوفر بجميع العملات</p></div>
+                            </div>
+                        </label>
+                        <label class="relative cursor-pointer">
+                            <input type="radio" name="payment_method" value="jawali" class="payment-radio sr-only" onchange="showPaymentDetails('jawali')">
+                            <div class="payment-card flex items-center gap-4">
+                                <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary text-2xl"><i class="fa-solid fa-mobile-screen"></i></div>
+                                <div><h4 class="font-bold text-navy text-lg">محفظة جوالي / فلوسك</h4><p class="text-sm text-gray-500 font-medium">تحويل فوري</p></div>
+                            </div>
+                        </label>
+                        <label class="relative cursor-pointer">
+                            <input type="radio" name="payment_method" value="najm" class="payment-radio sr-only" onchange="showPaymentDetails('najm')">
+                            <div class="payment-card flex items-center gap-4">
+                                <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center text-purple text-2xl"><i class="fa-solid fa-money-bill-transfer"></i></div>
+                                <div><h4 class="font-bold text-navy text-lg">حوالة النجم</h4><p class="text-sm text-gray-500 font-medium">إرسال حوالة باسم الشركة</p></div>
+                            </div>
+                        </label>
+                        <label class="relative cursor-pointer">
+                            <input type="radio" name="payment_method" value="onecash" class="payment-radio sr-only" onchange="showPaymentDetails('onecash')">
+                            <div class="payment-card flex items-center gap-4">
+                                <div class="w-14 h-14 bg-teal-50 rounded-xl flex items-center justify-center text-teal-500 text-2xl"><i class="fa-solid fa-wallet"></i></div>
+                                <div><h4 class="font-bold text-navy text-lg">محفظة وان كاش</h4><p class="text-sm text-gray-500 font-medium">بالريال اليمني (القديم)</p></div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div id="payment-instructions" class="hidden bg-light p-6 rounded-2xl border border-gray-200 mb-8">
+                        <h4 class="font-bold text-navy mb-2" id="instr-title">تعليمات الدفع</h4>
+                        
+                        <!-- Currency Selector -->
+                        <div id="currency-selector-div" class="hidden mb-4 bg-white p-4 rounded-xl border border-gray-200">
+                            <label class="block text-gray-600 font-bold mb-2 text-sm">بأي عملة تود تحويل المبلغ؟</label>
+                            <select id="kuraimi-currency" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 outline-none focus:border-primary font-bold transition-colors cursor-pointer" onchange="updateKuraimiAccount()">
+                                <option value="yer_old">الريال اليمني (قديم)</option>
+                                <option value="yer_new">الريال اليمني (جديد)</option>
+                                <option value="sar">الريال السعودي (SAR)</option>
+                                <option value="usd">الدولار الأمريكي (USD)</option>
+                            </select>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-xl border border-gray-100 flex justify-between items-center mt-4">
+                            <div>
+                                <p class="text-xs text-gray-400 font-bold mb-1">رقم الحساب / المستفيد</p>
+                                <p class="font-extrabold text-lg text-primary en-text tracking-wide" id="instr-account">123456789</p>
+                            </div>
+                            <button id="copy-btn" class="text-gray-400 hover:text-primary transition-colors bg-gray-50 hover:bg-blue-50 w-10 h-10 rounded-lg flex items-center justify-center relative" onclick="copyAccountNumber()">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="receipt-upload" class="hidden">
+                        <label class="block text-gray-600 font-bold mb-3 ml-1">إرفاق صورة سند التحويل</label>
+                        <div class="upload-zone" onclick="document.getElementById('file-upload').click()">
+                            <i class="fa-solid fa-cloud-arrow-up text-4xl text-gray-400 mb-3 block"></i>
+                            <p class="font-bold text-navy text-lg">اضغط لرفع صورة السند</p>
+                            <input type="file" id="file-upload" class="hidden" accept="image/*" onchange="showFileName(this)">
+                        </div>
+                        <p id="file-name-display" class="text-success font-bold mt-2 text-sm text-center hidden"></p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="w-full lg:w-1/3">
+                <div class="bg-navy rounded-3xl p-8 shadow-2xl sticky top-28 text-white">
+                    <h3 class="text-2xl font-extrabold mb-6">ملخص الطلب</h3>
+                    <div class="flex gap-4 mb-6 border-b border-gray-700 pb-6">
+                        <img src="https://placehold.co/400x500/2563EB/ffffff?text=Product" alt="Product" class="w-20 h-20 rounded-xl object-cover border border-gray-700">
+                        <div>
+                            <span class="text-xs font-bold text-gray-400 bg-gray-800 px-2 py-1 rounded-md mb-2 inline-block uppercase en-text">SHEIN</span>
+                            <h4 class="font-bold text-sm line-clamp-2">فستان صيفي أنيق بتصميم عصري (مثال لمنتج من شي إن)</h4>
+                        </div>
+                    </div>
+                    <div class="space-y-4 mb-6 text-sm font-medium">
+                        <div class="flex justify-between text-gray-300"><span>سعر المنتج الأصلي</span><span class="en-text">$18.50</span></div>
+                        <div class="flex justify-between text-gray-300"><span>عمولة وصلة (10%)</span><span class="en-text">$1.85</span></div>
+                        <div class="flex justify-between text-gray-300 border-t border-gray-700 pt-4"><span>سعر الصرف المعتمد</span><span class="en-text text-gray-400 text-xs">1 USD = 530 YER</span></div>
+                    </div>
+                    <div class="bg-white/10 rounded-2xl p-5 mb-8 backdrop-blur-sm border border-white/20">
+                        <p class="text-sm text-gray-300 mb-1 font-bold">الإجمالي المطلوب الدفع</p>
+                        <p class="text-3xl font-black text-white en-text tracking-wide">YR 13,785</p>
+                    </div>
+                    <button id="submit-order-btn" class="w-full bg-primary text-white rounded-2xl py-4 font-bold text-lg btn-lift hover:bg-blue-600 flex items-center justify-center gap-3">
+                        <span>تأكيد وإرسال الطلب</span><i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center" dir="rtl">
+        <div class="absolute inset-0 bg-navy/80 backdrop-blur-sm"></div>
+        <div class="bg-white rounded-[32px] p-10 shadow-2xl w-[90%] max-w-md relative z-10 text-center transform scale-95 opacity-0 transition-all duration-300" id="success-content">
+            <div class="w-24 h-24 bg-green-100 text-success rounded-full flex items-center justify-center text-5xl mx-auto mb-6"><i class="fa-solid fa-check"></i></div>
+            <h3 class="text-3xl font-extrabold text-navy mb-4">تم استلام طلبك!</h3>
+            <p class="text-gray-600 font-medium text-lg mb-8">رقم الطلب الخاص بك هو: <span class="en-text font-bold text-primary">#WSL-9842</span></p>
+            <a href="index.html" class="block w-full bg-navy text-white rounded-2xl py-4 font-bold text-lg hover:bg-primary transition-colors">العودة للرئيسية</a>
+        </div>
+    </div>
+
+    <script>
+        function showToast(message, isWarning = false) {
+            const toastDiv = document.createElement('div');
+            toastDiv.className = `fixed top-4 right-4 text-white px-6 py-3 rounded-xl shadow-lg z-50 font-bold flex items-center gap-3 transform transition-all duration-300 -translate-y-20 opacity-0 ${isWarning ? 'bg-red-500' : 'bg-success'}`;
+            toastDiv.innerHTML = isWarning ? `<i class="fa-solid fa-triangle-exclamation"></i> ${message}` : `<i class="fa-solid fa-check-circle"></i> ${message}`;
+            document.body.appendChild(toastDiv);
+            setTimeout(() => { toastDiv.classList.remove('-translate-y-20', 'opacity-0'); toastDiv.classList.add('translate-y-0', 'opacity-100'); }, 10);
+            setTimeout(() => { toastDiv.classList.add('-translate-y-20', 'opacity-0'); toastDiv.classList.remove('translate-y-0', 'opacity-100'); setTimeout(() => toastDiv.remove(), 300); }, 3000);
+        }
+
+        function showPaymentDetails(method) {
+            const instrDiv = document.getElementById('payment-instructions');
+            const receiptDiv = document.getElementById('receipt-upload');
+            const title = document.getElementById('instr-title');
+            const account = document.getElementById('instr-account');
+            const currencyDiv = document.getElementById('currency-selector-div');
+
+            instrDiv.classList.remove('hidden');
+            receiptDiv.classList.remove('hidden');
+            currencyDiv.classList.add('hidden');
+
+            if (method === 'kuraimi') {
+                title.textContent = 'تحويل إلى حساب الكريمي';
+                currencyDiv.classList.remove('hidden');
+                updateKuraimiAccount();
+            } else if (method === 'jawali') {
+                title.textContent = 'تحويل عبر جوالي / فلوسك';
+                account.textContent = '733206681';
+            } else if (method === 'najm') {
+                title.textContent = 'إرسال حوالة النجم';
+                account.textContent = 'باسم: شركة وصلة للتجارة (صنعاء)';
+            } else if (method === 'onecash') {
+                title.textContent = 'تحويل إلى محفظة وان كاش';
+                account.textContent = '733206681 (الريال القديم)';
+            }
+        }
+
+        function updateKuraimiAccount() {
+            const currency = document.getElementById('kuraimi-currency').value;
+            const account = document.getElementById('instr-account');
+            if (currency === 'yer_old') account.textContent = '123456789 (ريال قديم)';
+            else if (currency === 'yer_new') account.textContent = '987654321 (ريال جديد)';
+            else if (currency === 'sar') account.textContent = '123456789-SAR (سعودي)';
+            else if (currency === 'usd') account.textContent = '123456789-USD (دولار)';
+        }
+
+        function showFileName(input) {
+            const display = document.getElementById('file-name-display');
+            if (input.files && input.files[0]) {
+                display.textContent = "تم إرفاق: " + input.files[0].name;
+                display.classList.remove('hidden');
+            }
+        }
+
+        function copyAccountNumber() {
+            const accNum = document.getElementById('instr-account').textContent.split(' ')[0];
+            const tempInput = document.createElement("input");
+            tempInput.value = accNum;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            showToast("تم نسخ رقم الحساب بنجاح!", false);
+        }
+
+        const submitBtn = document.getElementById('submit-order-btn');
+        const modal = document.getElementById('success-modal');
+        const modalContent = document.getElementById('success-content');
+
+        submitBtn.addEventListener('click', () => {
+            const selectedPayment = document.querySelector('input[name="payment_method"]:checked');
+            if (!selectedPayment) {
+                showToast("الرجاء اختيار طريقة الدفع أولاً.", true);
+                return;
+            }
+            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> جاري التأكيد...';
+            submitBtn.disabled = true;
+            setTimeout(() => {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modalContent.classList.remove('scale-95', 'opacity-0');
+                    modalContent.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
